@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="active"> <!-- Add 'active' class for open state -->
+            <div class="brand">
+                <i class="bx bx-task"></i>
+                <span>TaskMaster</span>
+            </div>
+            <ul class="side-menu">
+                <li><a href="#"><i class="bx bx-cog"></i> Settings</a></li>
+                <li><a href="#" id="logout"><i class="bx bx-log-out"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="content">
+            <!-- Navbar -->
+            <nav>
+                <i class="bx bx-menu" id="sidebar-toggle"></i>
+                <div class="welcome">
+                    <h1>Welcome to TaskMaster</h1>
+                    <h2>Hello, <span id="user-name">User</span>!</h2>
+                </div>
+                <div class="nav-right">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search tasks...">
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <div class="profile">
+                        <img src="/placeholder.svg?height=36&width=36" alt="Profile" id="profile-img">
+                        <span id="profile-name">User</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <div class="stats">
+                    <div class="stat-box">
+                        <h3>Number of Tasks</h3>
+                        <p id="total-tasks">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Completed Tasks</h3>
+                        <p id="completed-tasks">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Tasks Completed This Year</h3>
+                        <p id="year-completed-tasks">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Your Savings</h3>
+                        <p id="savings">$0</p>
+                        <input type="number" id="savings-input" placeholder="Add savings">
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="grid-item clock">
+                        <div id="clock"></div>
+                    </div>
+                    <div class="grid-item task-format">
+                        <h3>Task Priority Distribution</h3>
+                        <canvas id="priority-chart"></canvas>
+                    </div>
+                    <div class="grid-item calendar">
+                        <div id="calendar"></div>
+                    </div>
+                    <div class="grid-item notes">
+						<h3>Notes <button id="add-note"><i class="bx bx-plus"></i> Add Note</button></h3>
+						<div id="notes-container"></div> <!-- Notes will be displayed here -->
+					</div>
+                    <div class="grid-item task-list">
+                        <h3>Tasks <button id="add-task-btn"><i class="bx bx-plus"></i> Add Task</button></h3>
+                        <div id="tasks-container"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="add-task-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Task</h2>
+            <input type="text" id="task-title" placeholder="Task title">
+            <input type="date" id="task-date">
+            <select id="task-priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <div class="modal-actions">
+                <button id="cancel-task">Cancel</button>
+                <button id="save-task">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div id="add-note-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Note</h2>
+            <textarea id="note-content" placeholder="Enter your note"></textarea>
+            <div class="modal-actions">
+                <button id="cancel-note">Cancel</button>
+                <button id="save-note">Add Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <!-- Additional libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
