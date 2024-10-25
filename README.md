@@ -12,7 +12,7 @@ TaskMaster is a sleek and modern dashboard design created using HTML, CSS, and J
 
 ## Getting Started
 
-1. Clone this repository: ``
+1. Clone this repository: `git@github.com:DELVINPB/TaskMaster.git`
 2. Open the `index.html` file in your web browser to view the dashboard.
 
 ## Technologies Used
